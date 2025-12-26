@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RENOVA Hochdruckreinigung | Stuttgart & Heilbronn</title>
   <meta name="description" content="RENOVA Hochdruckreinigung in Stuttgart & Heilbronn. Professionelle Reinigung von Terrassen, Einfahrten & Pflastersteinen. ☎ +49 1522 5405790">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%232dd4bf' width='100' height='100'/><text x='50' y='70' font-size='70' text-anchor='middle' fill='%230f172a' font-weight='900'>R</text></svg>">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     :root {
@@ -19,6 +20,7 @@
       background: var(--dark);
       color: #fff;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     .wa-bar {
@@ -41,6 +43,10 @@
       border-radius: 999px;
       margin-left: 10px;
       font-weight: 800;
+      transition: transform 0.2s;
+    }
+    .wa-bar a:hover {
+      transform: scale(1.05);
     }
 
     nav {
@@ -81,23 +87,51 @@
       font-weight: 900;
       color: var(--dark);
     }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
 
     .hero {
       padding-top: 140px;
+      padding-bottom: 80px;
       min-height: 100vh;
       display: flex;
       align-items: center;
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(45,212,191,0.1), transparent);
     }
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
+      position: relative;
+      z-index: 1;
     }
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 60px;
       align-items: center;
     }
     .hero-content h1 {
@@ -112,6 +146,7 @@
       font-size: 18px;
       color: #cbd5e1;
       margin-bottom: 30px;
+      line-height: 1.7;
     }
     .cta-group {
       display: flex;
@@ -127,6 +162,7 @@
       font-weight: 700;
       text-decoration: none;
       transition: all 0.2s;
+      font-size: 16px;
     }
     .btn-primary {
       background: var(--primary);
@@ -180,8 +216,42 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
+    .before { 
+      background: linear-gradient(135deg, #475569 0%, #64748b 100%), 
+                  url('https://images.unsplash.com/photo-1601209190870-38e14d37c632?w=800&q=80');
+      background-size: cover;
+      background-blend-mode: overlay;
+    }
+    .after { 
+      background: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80');
+      background-size: cover;
+    }
 
-    /* Gallery Section */
+    .trust-badges {
+      display: flex;
+      gap: 24px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #cbd5e1;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .badge-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
     .gallery {
       padding: 100px 20px;
       background: #1e293b;
@@ -200,8 +270,8 @@
     }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -213,31 +283,40 @@
       cursor: pointer;
       transition: transform 0.3s;
       border: 2px solid rgba(45,212,191,0.2);
+      background-size: cover;
+      background-position: center;
     }
     .gallery-item:hover {
       transform: scale(1.03);
       border-color: var(--primary);
     }
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .gallery-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
     }
     .gallery-caption {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 16px;
-      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      padding: 20px;
       color: #fff;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 15px;
+      z-index: 2;
     }
 
     .features {
       padding: 100px 20px;
       background: var(--dark);
+    }
+    .section-title {
+      text-align: center;
+      font-size: 42px;
+      margin-bottom: 50px;
+      color: var(--primary);
     }
     .features-grid {
       display: grid;
@@ -252,6 +331,12 @@
       border-radius: 16px;
       padding: 32px;
       text-align: center;
+      transition: all 0.3s;
+    }
+    .feature-card:hover {
+      background: rgba(45,212,191,0.08);
+      border-color: var(--primary);
+      transform: translateY(-4px);
     }
     .feature-icon {
       width: 64px;
@@ -272,6 +357,7 @@
     .feature-card p {
       color: #cbd5e1;
       font-size: 15px;
+      line-height: 1.6;
     }
 
     .contact {
@@ -290,16 +376,25 @@
       border: 1px solid rgba(45,212,191,0.2);
       border-radius: 16px;
       padding: 28px;
+      transition: all 0.3s;
+    }
+    .contact-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
     }
     .contact-card h3 {
       color: var(--primary);
       font-size: 18px;
       margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     .contact-card a {
       color: #cbd5e1;
       text-decoration: none;
       font-size: 16px;
+      transition: color 0.2s;
     }
     .contact-card a:hover {
       color: var(--primary);
@@ -310,6 +405,7 @@
       background: #020617;
       text-align: center;
       color: #64748b;
+      border-top: 1px solid rgba(45,212,191,0.1);
     }
 
     .wa-float {
@@ -327,27 +423,13 @@
       transition: transform 0.2s;
     }
     .wa-float:hover {
-      transform: scale(1.05);
-    }
-
-    /* Placeholder Images */
-    .img-placeholder {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #334155, #475569);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #94a3b8;
-      font-weight: 700;
-      font-size: 14px;
-      text-align: center;
-      padding: 20px;
+      transform: scale(1.08);
     }
 
     @media (max-width: 768px) {
       .hero-grid {
         grid-template-columns: 1fr;
+        gap: 40px;
       }
       .comparison-split {
         grid-template-columns: 1fr;
@@ -356,8 +438,15 @@
       nav {
         top: 52px;
       }
+      .nav-links {
+        display: none;
+      }
       .gallery-grid {
         grid-template-columns: 1fr;
+      }
+      .trust-badges {
+        flex-direction: column;
+        gap: 12px;
       }
     }
   </style>
@@ -373,7 +462,12 @@
         <div class="logo-box">R</div>
         <span>RENOVA</span>
       </div>
-      <a class="btn btn-primary" href="#contact">Kontakt</a>
+      <div class="nav-links">
+        <a href="#gallery">Referenzen</a>
+        <a href="#services">Leistungen</a>
+        <a href="#contact">Kontakt</a>
+      </div>
+      <a class="btn btn-primary" href="https://wa.me/4915225405790">Angebot</a>
     </div>
   </nav>
 
@@ -382,22 +476,33 @@
       <div class="hero-grid">
         <div class="hero-content">
           <h1>Hochdruckreinigung,<br><span>die überzeugt.</span></h1>
-          <p class="hero-text">Professionelle Reinigung von Terrassen, Einfahrten & Pflastersteinen in Stuttgart & Heilbronn. Sichtbares Ergebnis garantiert.</p>
+          <p class="hero-text">Professionelle Reinigung von Terrassen, Einfahrten & Pflastersteinen in Stuttgart & Heilbronn. Mit modernster Technik und jahrelanger Erfahrung sorgen wir für sichtbare Ergebnisse.</p>
           <div class="cta-group">
             <a href="https://wa.me/4915225405790" class="btn btn-primary">💬 WhatsApp Angebot</a>
-            <a href="tel:+4915225405790" class="btn btn-outline">📞 Anrufen</a>
-            <a href="#gallery" class="btn btn-outline">📸 Referenzen ansehen</a>
+            <a href="tel:+4915225405790" class="btn btn-outline">📞 Jetzt anrufen</a>
+          </div>
+          <div class="trust-badges">
+            <div class="badge">
+              <div class="badge-icon">✓</div>
+              Festpreis-Garantie
+            </div>
+            <div class="badge">
+              <div class="badge-icon">✓</div>
+              24h Antwort
+            </div>
+            <div class="badge">
+              <div class="badge-icon">✓</div>
+              Profi-Equipment
+            </div>
           </div>
         </div>
 
         <div class="comparison-card">
           <div class="comparison-split">
-            <div class="comparison-side">
-              <div class="img-placeholder">Vorher-Bild wird geladen...</div>
+            <div class="comparison-side before">
               <div class="comparison-label">❌ Vorher</div>
             </div>
-            <div class="comparison-side">
-              <div class="img-placeholder">Nachher-Bild wird geladen...</div>
+            <div class="comparison-side after">
               <div class="comparison-label">✅ Nachher</div>
             </div>
           </div>
@@ -412,60 +517,52 @@
       <p class="gallery-subtitle">Professionelle Ergebnisse aus Stuttgart & Heilbronn</p>
 
       <div class="gallery-grid">
-        <div class="gallery-item">
-          <div class="img-placeholder">Holzterrasse<br>Vorher/Nachher</div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80')">
           <div class="gallery-caption">🌲 Holzterrasse · Sichtbarer Unterschied</div>
         </div>
-        <div class="gallery-item">
-          <div class="img-placeholder">Pflastersteine<br>Vorher/Nachher</div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1601209190870-38e14d37c632?w=800&q=80')">
           <div class="gallery-caption">🪨 Pflastersteine · Maximaler Kontrast</div>
         </div>
-        <div class="gallery-item">
-          <div class="img-placeholder">Bunte Pflastersteine<br>Verschiedene Materialien</div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800&q=80')">
           <div class="gallery-caption">🎨 Verschiedene Oberflächen</div>
         </div>
-        <div class="gallery-item">
-          <div class="img-placeholder">Gelber Hochdruckreiniger<br>Profi-Equipment</div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80')">
           <div class="gallery-caption">⚙️ Profi-Equipment im Einsatz</div>
         </div>
-        <div class="gallery-item">
-          <div class="img-placeholder">Rotationsgerät<br>Terrasse</div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80')">
           <div class="gallery-caption">🔄 Spezial-Technik für gleichmäßiges Ergebnis</div>
         </div>
-        <div class="gallery-item">
-          <div class="img-placeholder">Große Fläche<br>Vogelperspektive</div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&q=80')">
           <div class="gallery-caption">📐 Großflächige Reinigung</div>
         </div>
-        <div class="gallery-item">
-          <div class="img-placeholder">Detail Wasserdruck<br>Action Shot</div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80')">
           <div class="gallery-caption">💪 Kraftvolle Reinigung</div>
         </div>
-        <div class="gallery-item">
-          <div class="img-placeholder">Garten Vogelperspektive<br>Komplette Szenerie</div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600607687315-eac5c2d3c4ac?w=800&q=80')">
           <div class="gallery-caption">🏡 Komplette Außenbereiche</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="features">
+  <section class="features" id="services">
     <div class="container">
-      <h2 style="text-align:center; font-size:42px; margin-bottom:50px; color:var(--primary)">Leistungen</h2>
+      <h2 class="section-title">Unsere Leistungen</h2>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">🏠</div>
           <h3>Terrassen & Balkone</h3>
-          <p>Stein, Holz, Beton – professionell gereinigt ohne Schäden.</p>
+          <p>Stein, Holz, Beton – professionell gereinigt ohne Schäden. Schonende Behandlung für langlebige Ergebnisse.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🚗</div>
           <h3>Einfahrten & Höfe</h3>
-          <p>Gleichmäßiges Ergebnis, saubere Fugen, weniger Rutschgefahr.</p>
+          <p>Gleichmäßiges Ergebnis, saubere Fugen, weniger Rutschgefahr. Ideal für Pflaster, Asphalt und Beton.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🏢</div>
           <h3>Fassaden & Wege</h3>
-          <p>Moos, Algen, Grünbelag – schonend und gründlich entfernt.</p>
+          <p>Moos, Algen, Grünbelag – schonend und gründlich entfernt. Materialgerechte Reinigung mit Profi-Equipment.</p>
         </div>
       </div>
     </div>
@@ -473,21 +570,24 @@
 
   <section class="contact" id="contact">
     <div class="container">
-      <h2 style="text-align:center; font-size:42px; margin-bottom:20px; color:var(--primary)">Kontakt</h2>
+      <h2 class="section-title">Kontakt aufnehmen</h2>
       <p style="text-align:center; color:#cbd5e1; margin-bottom:40px; font-size:18px">Jetzt unverbindlich anfragen – schnelle Rückmeldung garantiert.</p>
 
       <div class="contact-grid">
         <div class="contact-card">
           <h3>📞 Telefon</h3>
           <a href="tel:+4915225405790">+49 1522 5405790</a>
+          <p style="color:#94a3b8; margin-top:8px; font-size:14px">Mo-Sa: 8:00 - 20:00 Uhr</p>
         </div>
         <div class="contact-card">
           <h3>📧 E-Mail</h3>
           <a href="mailto:neipperger.seher@gmx.de">neipperger.seher@gmx.de</a>
+          <p style="color:#94a3b8; margin-top:8px; font-size:14px">Antwort innerhalb von 24h</p>
         </div>
         <div class="contact-card">
           <h3>📍 Adresse</h3>
           <p style="color:#cbd5e1">Will Straße 1<br>70178 Stuttgart</p>
+          <p style="color:#94a3b8; margin-top:8px; font-size:14px">Einsatzgebiet: Stuttgart & Heilbronn</p>
         </div>
       </div>
     </div>
@@ -495,6 +595,7 @@
 
   <footer>
     <p>&copy; 2025 RENOVA Hochdruckreinigung · Stuttgart & Heilbronn</p>
+    <p style="margin-top:8px; font-size:14px">Timmy & Maurice Seher</p>
   </footer>
 
   <a href="https://wa.me/4915225405790?text=Hallo%20RENOVA%2C%20ich%20möchte%20ein%20Angebot" class="wa-float" target="_blank">

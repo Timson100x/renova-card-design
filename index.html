@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RENOVA Hochdruckreinigung | Stuttgart & Heilbronn</title>
+  <meta name="description" content="RENOVA Hochdruckreinigung in Stuttgart & Heilbronn. Professionelle Reinigung von Terrassen, Einfahrten & Pflastersteinen. ☎ +49 1522 5405790">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --primary: #2dd4bf;
+      --primary-dark: #14b8a6;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --gray: #64748b;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--dark);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    /* Header mit WhatsApp Bar */
+    .wa-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+      padding: 12px;
+      text-align: center;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(45,212,191,0.3);
+    }
+    .wa-bar a {
+      color: var(--dark);
+      text-decoration: none;
+      background: #fff;
+      padding: 8px 16px;
+      border-radius: 999px;
+      margin-left: 10px;
+      font-weight: 800;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 56px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(15,23,42,0.95);
+      backdrop-filter: blur(12px);
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(45,212,191,0.2);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--primary);
+    }
+    .logo-box {
+      width: 48px;
+      height: 48px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--dark);
+    }
+
+    /* Hero mit Vorher/Nachher */
+    .hero {
+      padding-top: 140px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-content h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 span {
+      color: var(--primary);
+    }
+    .hero-text {
+      font-size: 18px;
+      color: #cbd5e1;
+      margin-bottom: 30px;
+    }
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--dark);
+      box-shadow: 0 10px 40px rgba(45,212,191,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 50px rgba(45,212,191,0.4);
+    }
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--dark);
+    }
+
+    /* Vorher/Nachher Card */
+    .comparison-card {
+      background: linear-gradient(135deg, rgba(45,212,191,0.1), rgba(20,184,166,0.05));
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .comparison-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 400px;
+    }
+    .comparison-side {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+    .comparison-side::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    }
+    .comparison-label {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      z-index: 2;
+      font-weight: 800;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .before { background: linear-gradient(135deg, #475569, #64748b); }
+    .after { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); }
+
+    /* Features */
+    .features {
+      padding: 100px 20px;
+      background: #1e293b;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      background: rgba(45,212,191,0.05);
+      border: 1px solid rgba(45,212,191,0.2);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+    }
+    .feature-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 32px;
+    }
+    .feature-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+    .feature-card p {
+      color: #cbd5e1;
+      font-size: 15px;
+    }
+
+    /* Kontakt */
+    .contact {
+      padding: 100px 20px;
+      background: var(--dark);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 40px auto 0;
+    }
+    .contact-card {
+      background: rgba(45,212,191,0.08);
+      border: 1px solid rgba(45,212,191,0.2);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .contact-card h3 {
+      color: var(--primary);
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .contact-card a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .contact-card a:hover {
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 20px;
+      background: #020617;
+      text-align: center;
+      color: #64748b;
+    }
+
+    /* Floating WhatsApp */
+    .wa-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      background: #25D366;
+      color: #fff;
+      padding: 16px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 10px 40px rgba(37,211,102,0.4);
+      transition: transform 0.2s;
+    }
+    .wa-float:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .comparison-split {
+        grid-template-columns: 1fr;
+        height: 600px;
+      }
+      nav {
+        top: 52px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wa-bar">
+    📱 WhatsApp: <a href="https://wa.me/4915225405790">+49 1522 5405790</a>
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-box">R</div>
+        <span>RENOVA</span>
+      </div>
+      <a class="btn btn-primary" href="#contact">Kontakt</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1>Hochdruckreinigung,<br><span>die überzeugt.</span></h1>
+          <p class="hero-text">Professionelle Reinigung von Terrassen, Einfahrten & Pflastersteinen in Stuttgart & Heilbronn. Sichtbares Ergebnis garantiert.</p>
+          <div class="cta-group">
+            <a href="https://wa.me/4915225405790" class="btn btn-primary">WhatsApp Angebot</a>
+            <a href="tel:+4915225405790" class="btn btn-outline">📞 Anrufen</a>
+          </div>
+        </div>
+
+        <div class="comparison-card">
+          <div class="comparison-split">
+            <div class="comparison-side before">
+              <div class="comparison-label">❌ Vorher</div>
+            </div>
+            <div class="comparison-side after">
+              <div class="comparison-label">✅ Nachher</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <h2 style="text-align:center; font-size:42px; margin-bottom:50px; color:var(--primary)">Leistungen</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🏠</div>
+          <h3>Terrassen & Balkone</h3>
+          <p>Stein, Holz, Beton – professionell gereinigt ohne Schäden.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚗</div>
+          <h3>Einfahrten & Höfe</h3>
+          <p>Gleichmäßiges Ergebnis, saubere Fugen, weniger Rutschgefahr.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏢</div>
+          <h3>Fassaden & Wege</h3>
+          <p>Moos, Algen, Grünbelag – schonend und gründlich entfernt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 style="text-align:center; font-size:42px; margin-bottom:20px; color:var(--primary)">Kontakt</h2>
+      <p style="text-align:center; color:#cbd5e1; margin-bottom:40px; font-size:18px">Jetzt unverbindlich anfragen – schnelle Rückmeldung garantiert.</p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>📞 Telefon</h3>
+          <a href="tel:+4915225405790">+49 1522 5405790</a>
+        </div>
+        <div class="contact-card">
+          <h3>📧 E-Mail</h3>
+          <a href="mailto:neipperger.seher@gmx.de">neipperger.seher@gmx.de</a>
+        </div>
+        <div class="contact-card">
+          <h3>📍 Adresse</h3>
+          <p style="color:#cbd5e1">Will Straße 1<br>70178 Stuttgart</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 RENOVA Hochdruckreinigung · Stuttgart & Heilbronn</p>
+  </footer>
+
+  <a href="https://wa.me/4915225405790?text=Hallo%20RENOVA%2C%20ich%20möchte%20ein%20Angebot" class="wa-float" target="_blank">
+    💬 WhatsApp
+  </a>
+</body>
+</html>

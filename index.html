@@ -21,7 +21,6 @@
       line-height: 1.6;
     }
 
-    /* Header mit WhatsApp Bar */
     .wa-bar {
       position: fixed;
       top: 0;
@@ -44,7 +43,6 @@
       font-weight: 800;
     }
 
-    /* Navigation */
     nav {
       position: fixed;
       top: 56px;
@@ -84,7 +82,6 @@
       color: var(--dark);
     }
 
-    /* Hero mit Vorher/Nachher */
     .hero {
       padding-top: 140px;
       min-height: 100vh;
@@ -149,7 +146,6 @@
       color: var(--dark);
     }
 
-    /* Vorher/Nachher Card */
     .comparison-card {
       background: linear-gradient(135deg, rgba(45,212,191,0.1), rgba(20,184,166,0.05));
       border: 2px solid var(--primary);
@@ -184,13 +180,64 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-    .before { background: linear-gradient(135deg, #475569, #64748b); }
-    .after { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); }
 
-    /* Features */
-    .features {
+    /* Gallery Section */
+    .gallery {
       padding: 100px 20px;
       background: #1e293b;
+    }
+    .gallery h2 {
+      text-align: center;
+      font-size: 42px;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    .gallery-subtitle {
+      text-align: center;
+      color: #cbd5e1;
+      margin-bottom: 50px;
+      font-size: 18px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      transition: transform 0.3s;
+      border: 2px solid rgba(45,212,191,0.2);
+    }
+    .gallery-item:hover {
+      transform: scale(1.03);
+      border-color: var(--primary);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .features {
+      padding: 100px 20px;
+      background: var(--dark);
     }
     .features-grid {
       display: grid;
@@ -227,10 +274,9 @@
       font-size: 15px;
     }
 
-    /* Kontakt */
     .contact {
       padding: 100px 20px;
-      background: var(--dark);
+      background: #1e293b;
     }
     .contact-grid {
       display: grid;
@@ -259,7 +305,6 @@
       color: var(--primary);
     }
 
-    /* Footer */
     footer {
       padding: 40px 20px;
       background: #020617;
@@ -267,7 +312,6 @@
       color: #64748b;
     }
 
-    /* Floating WhatsApp */
     .wa-float {
       position: fixed;
       bottom: 24px;
@@ -286,6 +330,21 @@
       transform: scale(1.05);
     }
 
+    /* Placeholder Images */
+    .img-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #334155, #475569);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      padding: 20px;
+    }
+
     @media (max-width: 768px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -296,6 +355,9 @@
       }
       nav {
         top: 52px;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -322,20 +384,65 @@
           <h1>Hochdruckreinigung,<br><span>die überzeugt.</span></h1>
           <p class="hero-text">Professionelle Reinigung von Terrassen, Einfahrten & Pflastersteinen in Stuttgart & Heilbronn. Sichtbares Ergebnis garantiert.</p>
           <div class="cta-group">
-            <a href="https://wa.me/4915225405790" class="btn btn-primary">WhatsApp Angebot</a>
+            <a href="https://wa.me/4915225405790" class="btn btn-primary">💬 WhatsApp Angebot</a>
             <a href="tel:+4915225405790" class="btn btn-outline">📞 Anrufen</a>
+            <a href="#gallery" class="btn btn-outline">📸 Referenzen ansehen</a>
           </div>
         </div>
 
         <div class="comparison-card">
           <div class="comparison-split">
-            <div class="comparison-side before">
+            <div class="comparison-side">
+              <div class="img-placeholder">Vorher-Bild wird geladen...</div>
               <div class="comparison-label">❌ Vorher</div>
             </div>
-            <div class="comparison-side after">
+            <div class="comparison-side">
+              <div class="img-placeholder">Nachher-Bild wird geladen...</div>
               <div class="comparison-label">✅ Nachher</div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2>Unsere Referenzen</h2>
+      <p class="gallery-subtitle">Professionelle Ergebnisse aus Stuttgart & Heilbronn</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="img-placeholder">Holzterrasse<br>Vorher/Nachher</div>
+          <div class="gallery-caption">🌲 Holzterrasse · Sichtbarer Unterschied</div>
+        </div>
+        <div class="gallery-item">
+          <div class="img-placeholder">Pflastersteine<br>Vorher/Nachher</div>
+          <div class="gallery-caption">🪨 Pflastersteine · Maximaler Kontrast</div>
+        </div>
+        <div class="gallery-item">
+          <div class="img-placeholder">Bunte Pflastersteine<br>Verschiedene Materialien</div>
+          <div class="gallery-caption">🎨 Verschiedene Oberflächen</div>
+        </div>
+        <div class="gallery-item">
+          <div class="img-placeholder">Gelber Hochdruckreiniger<br>Profi-Equipment</div>
+          <div class="gallery-caption">⚙️ Profi-Equipment im Einsatz</div>
+        </div>
+        <div class="gallery-item">
+          <div class="img-placeholder">Rotationsgerät<br>Terrasse</div>
+          <div class="gallery-caption">🔄 Spezial-Technik für gleichmäßiges Ergebnis</div>
+        </div>
+        <div class="gallery-item">
+          <div class="img-placeholder">Große Fläche<br>Vogelperspektive</div>
+          <div class="gallery-caption">📐 Großflächige Reinigung</div>
+        </div>
+        <div class="gallery-item">
+          <div class="img-placeholder">Detail Wasserdruck<br>Action Shot</div>
+          <div class="gallery-caption">💪 Kraftvolle Reinigung</div>
+        </div>
+        <div class="gallery-item">
+          <div class="img-placeholder">Garten Vogelperspektive<br>Komplette Szenerie</div>
+          <div class="gallery-caption">🏡 Komplette Außenbereiche</div>
         </div>
       </div>
     </div>
